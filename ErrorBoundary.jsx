@@ -1,0 +1,25 @@
+import React, {Component} from 'react'
+
+class ErrorBoundary extends Component {
+	constructor (props) {
+		super(props)
+		this.state = {
+			hasErroe: false
+		}
+	}
+	
+	componentDidCatch () {
+		this.setState({
+			hasError: true
+		})
+	}
+	
+	render () {
+		if(this.state.hasError) {
+			return <h1>出错了</h1>
+		} else {
+			return this.props.children
+		}
+	}
+}
+export default ErrorBoundary
